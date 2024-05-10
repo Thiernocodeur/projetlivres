@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application de Suivi de Lecture</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <header>
+        <h1 class="h">L'importance des Livres dans la Société</h1>
+    </header>
+    
+   
+    
+     <div class="livres">
+        <div class="container">
+            <div class="centered-items">
+                <h1 class="h1">Liste de Livres</h1>
+                <button id="ajouterLivreBtn" class="ajouterLivreBtn">Ajouter un livre</button>
+            </div>
+            
+        </div>
+        <ul id="listeLivres" class="listeLivres"></ul>
+    
+       
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form id="ajouterForm" class="ajouter-form">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <input type="text" id="titreInput" placeholder="Titre du livre" style="width: 400px; margin-bottom: 10px;">
+                        <input type="text" id="auteurInput" placeholder="Auteur du livre" style="width: 400px; margin-bottom: 10px;">
+                    </div>
+                     <button id="ajouterBtn"  class="ajouterBtn">Ajouter</button> 
+                </form>
+            </div>
+        </div>
+        
+    </div> 
+
+   
+
+    <section class="container">
+        <div class="card">
+            <div class="content">
+                <h2>Éducation et Connaissance</h2>
+                <p>Les livres sont des sources essentielles de connaissances et d'apprentissage. Ils sont utilisés dans les écoles, les universités et les bibliothèques pour fournir une éducation formelle et informelle à toutes les générations. </p>
+            </div>
+            <div class="image-container">
+                <img src="img/edu.jpg" alt="Éducation et Connaissance" >
+            </div>
+        </div>
+    
+        <div class="card">
+            <div class="content">
+                <h2>Divertissement et Détente</h2>
+                <p>Outre leur rôle éducatif, les livres offrent également un moyen de divertissement et de détente.</p>
+            </div>
+            <div class="image-container">
+                <img src="img/diver.jpeg" alt="Divertissement et Détente">
+            </div>
+        </div>
+    
+        <div class="card">
+            <div class="content">
+                <h2>Communication et Transmission de la Culture</h2>
+                <p>Les livres sont des outils essentiels pour la communication et la transmission de la culture. Ils permettent aux auteurs d'exprimer leurs idées, leurs expériences et leurs perspectives, tout .</p>
+            </div>
+            <div class="image-container">
+                <img src="img/img3.webp" alt="Communication et Transmission de la Culture">
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <script src="scripte.js"></script>
+</body>
+</html>
