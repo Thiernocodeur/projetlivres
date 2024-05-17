@@ -31,16 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // listeLivres.addEventListener("click", function(e) {
-    //     if (e.target.classList.contains("supprimer")) {
-    //         const livreId = e.target.parentElement.parentElement.dataset.id;
-    //         supprimerLivre(livreId);
-    //     } else if (e.target.classList.contains("marquer")) {
-    //         const livreId = e.target.parentElement.parentElement.dataset.id;
-    //         basculerStatutLecture(livreId);
-    //     }
-    // });
-    
+  
 
    
 
@@ -56,17 +47,61 @@ function supprimerLivre(id) {
     afficherLivres();
 }
 
+// function basculerStatutLecture(id) {
+//     let livres = recupererLivresDepuisLocalStorage();
+//     livres = livres.map(livre => {
+//         if (livre.id === parseInt(id)) {
+//             livre.lu = !livre.lu;
+//             const auteur = document.querySelector(`#${livre.auteur}-${livre.id}`)
+//             const titre = document.querySelector(`#${livre.titre}-${livre.id}`)
+//             const btn = document.querySelector(`[data-id="${livre.id}"]`)
+//             console.log({ html: btn.innerHTML, auteur, titre})
+//             if (btn.innerHTML === 'Lu') {
+//                  auteur.style.textDecoration = 'line-through'
+//                  titre.style.textDecoration = 'line-through'
+//                 auteur.classList.add('test')
+//                 titre.classList.add('test')
+//             }
+//         }
+//         return livre;
+//     });
+//     localStorage.setItem("livres", JSON.stringify(livres));
+//     afficherLivres();
+// }
+
+
+
+
 function basculerStatutLecture(id) {
     let livres = recupererLivresDepuisLocalStorage();
     livres = livres.map(livre => {
         if (livre.id === parseInt(id)) {
             livre.lu = !livre.lu;
+           
         }
         return livre;
     });
     localStorage.setItem("livres", JSON.stringify(livres));
     afficherLivres();
+
+    const livre = livres.find(livre=>livre.id===parseInt(id))
+    if(livre){
+        const auteur = document.querySelector(`#${livre.auteur}-${livre.id}`)
+        const titre = document.querySelector(`#${livre.titre}-${livre.id}`)
+        
+        if (livre.lu) {
+            auteur.style.textDecoration = 'line-through';
+            titre.style.textDecoration = 'line-through';
+        } else {
+            auteur.style.textDecoration = 'none';
+            titre.style.textDecoration = 'none';
+        }
+    }
+
+
 }
+
+
 
 function ajouterLivreDansListe(titre, auteur) {
     const livres = recupererLivresDepuisLocalStorage();
@@ -92,13 +127,13 @@ function afficherLivres() {
     livres.forEach(livre => {
         const li = document.createElement("li");
         li.innerHTML = `
-            <div class="titre-livre">${livre.titre}</div>
-            <div class="auteur-livre">${livre.auteur}</div>
+            <p class="titre-livre" id="${livre.titre}-${livre.id}">${livre.titre}</p>
+            <p class="auteur-livre" id="${livre.auteur}-${livre.id}">${livre.auteur}</p>
             <div class="options-livre">
-                <button class="supprimer"  onclick="supprimerLivre(${livre.id})" data-id="${livre.id}">Supprimer</button>
+                <button class="supprimer"  onclick="supprimerLivre(${livre.id})">Supprimer</button>
                 <button class="marquer" onclick=" basculerStatutLecture(${livre.id})" data-id="${livre.id}">${livre.lu ? 'Non Lu' : 'Lu'}</button>
             </div>
         `;
-        listeLivres.appendChild(li);
+        listeLivres.appendChild(li);2
     });
 }
